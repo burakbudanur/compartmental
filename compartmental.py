@@ -235,10 +235,14 @@ class Model(nx.DiGraph):
             
             ns     = {
                 sym : sp.Symbol(sym) for sym in 
-                self.compartments + self.parameters + self.inputs
+                self.compartments + self.parameters
             }
+            
+            for fun in self.inputs:
+                ns[fun] = sp.Function(fun)
+            
             input_symbols = [
-                sp.Symbol(sym) for sym in self.inputs
+                sp.Function(fun) for fun in self.inputs
             ]
 
         else:
