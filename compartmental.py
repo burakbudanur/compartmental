@@ -309,7 +309,19 @@ class Model(nx.DiGraph):
 
 
     def plot_compartment(self, simulation_time, solution, compartment, ax=None, scale = 1.0):
+        """
+        Plots the compartment of interest at a specified simulation time.
 
+        Args:
+            solution (numpy array): The solution to the model.
+            compartment (str): The name of the compartment to plot.
+            ax (matplotlib.axes.Axes, optional): The axes object to plot on.
+            Default is None and a new figure will be created.
+            scale (float, optional): A scale factor for the plot size. Default is 1.0.
+
+        Returns:
+            matplotlib.pyplot.Figure: The figure containing the plotted data.
+        """
         if ax == None:
             fig = plt.figure(figsize=(6,6))
             ax  = fig.gca()
